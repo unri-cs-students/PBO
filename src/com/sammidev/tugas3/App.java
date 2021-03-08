@@ -48,7 +48,7 @@ public class App {
         System.out.println(dev.toString());
 
         // access totalMahasiswa/static member
-        int expected = 2;
+        int expected = 3;
         if (Mahasiswa.getTotalMahasiswa() == expected) {
             System.out.println("total mahasiswa : " + Mahasiswa.getTotalMahasiswa());
         }
