@@ -3,7 +3,7 @@ package com.sammidev.algo;
 /**
  * Created by sam on 08/03/21.
  */
-public class App {
+public class CountComplexity {
     public static void main(String[] args) {
 
         long startTime = System.nanoTime();
