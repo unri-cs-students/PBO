@@ -2,6 +2,7 @@
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -28,7 +29,7 @@ class Product {
     private String id;
     private String name;
     private BigDecimal price;
-    private LocalDateTime expired;
+    private String expired;
     private Category category;
 
     private final String[] items = {"Panci","Baju","Celana","Iphone XS"};
@@ -44,23 +45,24 @@ class Product {
     // 2 args constrcutor
     public Product(String id, String barang) {
         this(id, barang, App.generateRandomBigDecimalFromRange(
-                new BigDecimal(100000).setScale(2, BigDecimal.ROUND_HALF_UP),
-                new BigDecimal(10000000).setScale(2, BigDecimal.ROUND_HALF_UP)
+                new BigDecimal("500000").setScale(0, BigDecimal.ROUND_HALF_UP),
+                new BigDecimal("9000000").setScale(0, BigDecimal.ROUND_HALF_UP)
         ));
     }
 
     // 3 args constrcutor
     public Product(String id, String name, BigDecimal price) {
-        this(id, name, price, LocalDateTime.now().plus(3, ChronoUnit.WEEKS));
+        // format = 09 April 2021
+        this(id, name, price, LocalDateTime.now().plus(3, ChronoUnit.WEEKS).format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
     }
 
     // 4 args constrcutor
-    public Product(String id, String name, BigDecimal price, LocalDateTime expired) {
+    public Product(String id, String name, BigDecimal price, String expired) {
         this(id,name, price,expired, Category.DAPUR);
     }
 
     // all args constrcutor
-    public Product(String id, String name, BigDecimal price, LocalDateTime expired, Category category) {
+    public Product(String id, String name, BigDecimal price, String expired, Category category) {
         this.id        = id;
         this.name      = items[rand];
         this.price     = price;
@@ -72,7 +74,7 @@ class Product {
     public String show() {
         return  "\n\n  id       = " + this.id   + "\n" +
                 "  name     = " + this.name     + "\n" +
-                "  price    = " + this.price    + "\n" +
+                "  price    = Rp." + this.price    + "\n" +
                 "  expired  = " + this.expired  + "\n" +
                 "  cateogry = " + this.category + "\n";
     }
