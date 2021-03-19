@@ -1,22 +1,28 @@
-// package com.sammidev.tugas4;
+ package com.sammidev.tugas4;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
         Product a = new Product(UUID.randomUUID().toString());
         Product b = new Product(UUID.randomUUID().toString());
         Product c = new Product(UUID.randomUUID().toString());
-        
+
         System.out.println(a.show());
         System.out.println(b.show());
         System.out.println(c.show());
+
+    }
+
+    public static BigDecimal generateRandomBigDecimalFromRange(BigDecimal min, BigDecimal max) {
+        BigDecimal randomBigDecimal = min.add(new BigDecimal(Math.random()).multiply(max.subtract(min)));
+        return randomBigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 }
+
 
 class Product {
     private String id;
@@ -29,6 +35,7 @@ class Product {
     Random random = new Random();
     int rand = random.nextInt(items.length);
 
+
     // 1 args constrcutor
     public Product(String id) {
         this(id, null);
@@ -36,7 +43,10 @@ class Product {
 
     // 2 args constrcutor
     public Product(String id, String barang) {
-        this(id, barang, new BigDecimal(5000000));
+        this(id, barang, App.generateRandomBigDecimalFromRange(
+                new BigDecimal(100000).setScale(2, BigDecimal.ROUND_HALF_UP),
+                new BigDecimal(10000000).setScale(2, BigDecimal.ROUND_HALF_UP)
+        ));
     }
 
     // 3 args constrcutor
