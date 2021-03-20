@@ -58,7 +58,7 @@ class Product {
 
     // 4 args constrcutor
     public Product(String id, String name, BigDecimal price, String expired) {
-        this(id,name, price,expired, Category.DAPUR);
+        this(id,name, price,expired, Category.UNCATEGORY);
     }
 
     // all args constrcutor
@@ -67,7 +67,17 @@ class Product {
         this.name      = items[rand];
         this.price     = price;
         this.expired   = expired;
-        this.category  = category;
+
+        if (this.name.equalsIgnoreCase("Iphone XS")) {
+        	 this.category  = Category.HP;
+        }else if(this.name.equalsIgnoreCase("Panci")) {
+        	 this.category  = Category.DAPUR;
+        }else if(this.name.equalsIgnoreCase("Baju") || name.equalsIgnoreCase("Celana")) {
+        	this.category = Category.FASHION;	
+        }else {
+        	this.category = category;
+        }
+       
     }
 
     // show data
@@ -81,5 +91,5 @@ class Product {
 }
 
 enum Category {
-    DAPUR,ELEKTRONIK,FASHION,KESEHATAN,KECANTIKAN,OTOMOTIF
+    DAPUR,ELEKTRONIK,FASHION,KESEHATAN,KECANTIKAN,OTOMOTIF,HP,UNCATEGORY
 }
