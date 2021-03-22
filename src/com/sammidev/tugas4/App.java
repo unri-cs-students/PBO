@@ -32,7 +32,7 @@ class Product {
     private String expired;
     private Category category;
 
-    private final String[] items = {"Periuk kere","Baskom","Ember","Panci","Baju","Celana","Iphone XS"};
+    private final String[] items = {"Panci","Baju","Celana","Iphone XS"};
     Random random = new Random();
     int rand = random.nextInt(items.length);
 
