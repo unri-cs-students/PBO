@@ -6,6 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Product> productsList = new ArrayList<>();
+        List<Product> productsList2 = new ArrayList<>();
 
         productsList.add(new Product("Sirup",100000d));
         productsList.add(new Product("kurma",50000d));
@@ -17,10 +18,14 @@ public class Main {
         penjual1.productList = productsList;
         penjual1.showProducts();
 
+
+        productsList2.add(productsList.get(1));
+        productsList2.add(productsList.get(2));
+
         Penjual penjual2 = new Penjual();
         penjual2.username = "adid";
         penjual2.password = "adid";
-        penjual2.productList = List.of(productsList.get(1), productsList.get(2));
+        penjual2.productList = productsList2;
         penjual2.showProducts();
 
         Pembeli pembeli = new Pembeli();
